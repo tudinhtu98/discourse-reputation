@@ -1,3 +1,3 @@
 vi:
   site_settings:
-    name_enabled: 'Bật Name'
+    discourse_reputation_enabled: 'Bật discourse_reputation'

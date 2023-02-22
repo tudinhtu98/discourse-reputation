@@ -1,0 +1,30 @@
+.user-vote-count {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.topic-meta-data {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.username-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: stretch;
+}
+
+.username-reputation-container {
+  display: flex;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
