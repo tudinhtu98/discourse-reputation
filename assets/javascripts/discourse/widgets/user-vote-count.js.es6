@@ -1,14 +1,14 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
 
-createWidget('user-vote-count', {
-  tagName: 'div.user-vote-count',
-  buildKey: () => `user-vote-count`,
+createWidget('user-reputation-count', {
+  tagName: 'div.user-reputation-count',
+  buildKey: () => `user-reputation-count`,
 
   html(attrs, state) {
-    const voteCount = attrs.voteCount ? attrs.voteCount.toString() : "0";
+    const reputationCount = attrs.reputationCount ? attrs.reputationCount.toString() : "0";
     return [
-      h("span.vote_count", `reputation score: ${voteCount}`)
+      h("span.vote_count", `reputation score: ${reputationCount}`)
     ];
   },
 });
