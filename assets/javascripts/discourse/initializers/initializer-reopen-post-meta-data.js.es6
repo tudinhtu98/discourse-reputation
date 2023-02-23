@@ -1,6 +1,5 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { h } from "virtual-dom";
-import { iconNode } from "discourse-common/lib/icon-library";
 import { includeAttributes } from "discourse/lib/transform-post";
 
 export default {

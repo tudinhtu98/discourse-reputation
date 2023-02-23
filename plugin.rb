@@ -10,6 +10,7 @@ PLUGIN_NAME ||= 'discourse_reputation'.freeze
 register_asset 'stylesheets/discourse-reputation.scss'
 after_initialize do
     # load File.expand_path('../app/controllers/discourse_reputation_controller.rb', __FILE__)
+    load File.expand_path('../app/lib/post_voting/vote_manager.rb', __FILE__)
 
     Discourse::Application.routes.append do
         # Map the path `/discourse-reputation` to `DiscourseReputationController`’s `index` method
