@@ -19,9 +19,17 @@ PostVoting::VoteManager.class_eval do
           
           reputation_change =
             if existing_vote
-              QuestionAnswerVote.directions[:up] == direction ? 7 : -7
+              if obj.is_a?(Post)
+                QuestionAnswerVote.directions[:up] == direction ? 7 : -7
+              else
+                QuestionAnswerVote.directions[:up] == direction ? 4 : -4
+              end
             else
-              QuestionAnswerVote.directions[:up] == direction ? 5 : -2
+              if obj.is_a?(Post)
+                QuestionAnswerVote.directions[:up] == direction ? 5 : -2
+              else
+                QuestionAnswerVote.directions[:up] == direction ? 2 : -2
+              end
             end
   
           existing_vote.destroy! if existing_vote
@@ -46,7 +54,12 @@ PostVoting::VoteManager.class_eval do
             direction = vote.direction
             vote.destroy!
             count_change = QuestionAnswerVote.directions[:up] == direction ? -1 : 1
-            reputation_change = QuestionAnswerVote.directions[:up] == direction ? -5 : 2
+            reputation_change =
+              if obj.is_a?(Post)
+                QuestionAnswerVote.directions[:up] == direction ? -5 : 2
+              else
+                QuestionAnswerVote.directions[:up] == direction ? -2 : 2
+              end
 
             vote_count = obj.qa_vote_count + count_change
             reputation_count = obj.qa_reputation_count + reputation_change

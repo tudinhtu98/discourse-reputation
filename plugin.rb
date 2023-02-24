@@ -18,7 +18,11 @@ after_initialize do
         # get '/discourse-reputation' => 'discourse_reputation#index'
     end
 
-    add_to_class(:user, :reputation_count) { Post.where(user_id: self.id).sum(:qa_reputation_count) }
+    add_to_class(:user, :reputation_count) do
+        reputationPost = Post.where(user_id: self.id).sum(:qa_reputation_count)
+        reputationComment = QuestionAnswerComment.where(user_id: self.id).sum(:qa_reputation_count)
+        reputation = reputationPost + reputationComment
+    end
     add_to_serializer(:user_card, :reputation_count) { object.reputation_count }
-    add_to_serializer(:post, :user_reputation_count) { Post.where(user_id: object.user_id).sum(:qa_reputation_count) }
+    add_to_serializer(:post, :user_reputation_count) { object.user.reputation_count }
 end 
