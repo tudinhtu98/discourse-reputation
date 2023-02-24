@@ -2,7 +2,7 @@
 
 class AddQaReputationCountToQuestionAnswerComments < ActiveRecord::Migration[6.1]
   def up
-    add_column :question_answer_comments, :qa_reputation_count, :integer, default: 100
+    add_column :question_answer_comments, :qa_reputation_count, :integer, default: 0
   end
 
   def down
