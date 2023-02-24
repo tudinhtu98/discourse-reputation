@@ -6,9 +6,16 @@ createWidget('user-reputation-count', {
   buildKey: () => `user-reputation-count`,
 
   html(attrs, state) {
-    const reputationCount = attrs.reputationCount ? attrs.reputationCount.toString() : "0";
+    const reputationCount = attrs.reputationCount ? attrs.reputationCount : 0;
+    const username = attrs.username ? attrs.username : "";
+
     return [
-      h("span.vote_count", `reputation score: ${reputationCount}`)
+      h("span.vote_count", {
+        attributes: {
+          "data-reputation-username": username,
+          "data-reputation-score": reputationCount
+        }
+      }, `reputation score: ${reputationCount}`)
     ];
   },
 });

@@ -13,7 +13,7 @@ export default {
           return [
             h("div", {className: "username-container"}, this._super(...arguments)),
             h("div", {className: "username-reputation-container"}, [
-              this.attach("user-reputation-count", { reputationCount: attrs.user_reputation_count })
+              this.attach("user-reputation-count", { reputationCount: attrs.user_reputation_count, username: attrs.username })
             ])
           ];
         },
