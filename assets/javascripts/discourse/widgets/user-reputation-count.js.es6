@@ -10,7 +10,7 @@ createWidget('user-reputation-count', {
     const username = attrs.username ? attrs.username : "";
 
     return [
-      h("span.vote_count", {
+      h("span", {
         attributes: {
           "data-reputation-username": username,
           "data-reputation-score": reputationCount
