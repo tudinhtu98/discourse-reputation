@@ -2,6 +2,7 @@ import { withPluginApi } from "discourse/lib/plugin-api";
 import { includeAttributes } from "discourse/lib/transform-post";
 import { castVote, removeVote } from "../lib/post-voting-utilities";
 import { popupAjaxError } from "discourse/lib/ajax-error";
+import I18n from "I18n";
 
 function changeReputationScoreGlobal(username, reputationChange, isIncrease) {
   // use jquery to get element, then change element value
@@ -14,7 +15,7 @@ function changeReputationScoreGlobal(username, reputationChange, isIncrease) {
   else
     reputationResult = userReputationCount - reputationChange;
   element.attr("data-reputation-score", reputationResult);
-  element.text(`reputation score: ${reputationResult}`);
+  element.text(`${I18n.t("reputation_score")}: ${reputationResult}`);
 
   return reputationResult;
 }

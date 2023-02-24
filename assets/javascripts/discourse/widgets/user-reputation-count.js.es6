@@ -1,5 +1,6 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
+import I18n from "I18n";
 
 createWidget('user-reputation-count', {
   tagName: 'div.user-reputation-count',
@@ -15,7 +16,7 @@ createWidget('user-reputation-count', {
           "data-reputation-username": username,
           "data-reputation-score": reputationCount
         }
-      }, `reputation score: ${reputationCount}`)
+      }, `${I18n.t("reputation_score")}: ${reputationCount}`)
     ];
   },
 });
