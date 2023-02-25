@@ -1,3 +1,4 @@
 vi:
   site_settings:
-    discourse_reputation_enabled: 'Bật discourse_reputation'
+    discourse_reputation_enabled: "Bật discourse_reputation"
+    cache_in_minutes_user_badge_count: "Thời gian cache user_badge_count trước khi query lần nữa, tính bằng phút"

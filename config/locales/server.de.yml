@@ -1,3 +1,4 @@
 en:
   site_settings:
-    discourse_reputation_enabled: 'Aktivieren Sie discourse_reputation'
+    discourse_reputation_enabled: "Aktivieren Sie discourse_reputation"
+    cache_in_minutes_user_badge_count: "User_badge_count Cache-Zeit vor erneuter Abfrage in Minuten"

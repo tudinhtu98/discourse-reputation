@@ -1,3 +1,6 @@
 plugins:
   discourse_reputation_enabled:
     default: false
+  cache_in_minutes_user_badge_count:
+      default: 5
+      client: false

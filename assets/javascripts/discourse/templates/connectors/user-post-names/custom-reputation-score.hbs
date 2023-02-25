@@ -1,2 +1,9 @@
-{{mount-widget widget="user-reputation-count" args=(hash reputationCount=args.model.reputation_count)}}
+{{mount-widget widget="user-reputation-count" args=(hash
+    reputationCount=args.model.reputation_count
+)}}
+{{mount-widget widget="user-badge-count-by-type" args=(hash
+    goldBadgeCount=args.model.gold_badge_count
+    silverBadgeCount=args.model.silver_badge_count
+    bronzeBadgeCount=args.model.bronze_badge_count
+)}}
 

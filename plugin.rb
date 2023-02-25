@@ -12,6 +12,33 @@ after_initialize do
     # load File.expand_path('../app/controllers/discourse_reputation_controller.rb', __FILE__)
     load File.expand_path('../app/lib/post_voting/vote_manager.rb', __FILE__)
 
+    module ::DiscourseReputation
+        class Engine < ::Rails::Engine
+          engine_name "discourse_reputation"
+          isolate_namespace DiscourseReputation
+        end
+    end
+
+    module DiscourseReputation::DiscourseReputationAccess
+        def self.get_user_badge_count_by_type(user_id, badge_type_id)
+            cacheKey = "discourse_reputation_cache:get_user_badge_count_by_type:#{user_id}:#{badge_type_id}"
+            cachedValue = Discourse.redis.get(cacheKey)
+            if cachedValue
+                cachedValue
+            else
+                sql = <<~SQL
+                    SELECT COUNT(*)
+                    FROM user_badges ub
+                    LEFT JOIN badges b ON b.id = ub.badge_id
+                    WHERE user_id = :user_id AND b.badge_type_id = :badge_type_id
+                SQL
+                calculatedValue = DB.query_single(sql, user_id: user_id, badge_type_id: badge_type_id)[0].to_i
+                Discourse.redis.setex(cacheKey, SiteSetting.cache_in_minutes_user_badge_count.to_i.minutes.seconds, calculatedValue)
+                calculatedValue
+            end
+        end
+    end
+
     Discourse::Application.routes.append do
         # Map the path `/discourse-reputation` to `DiscourseReputationController`’s `index` method
         # Remove route if not in use
@@ -25,4 +52,14 @@ after_initialize do
     end
     add_to_serializer(:user_card, :reputation_count) { object.reputation_count }
     add_to_serializer(:post, :user_reputation_count) { object.user.reputation_count }
+
+    add_to_class(:user, :gold_badge_count) { DiscourseReputation::DiscourseReputationAccess.get_user_badge_count_by_type(id, 1) }
+    add_to_class(:user, :silver_badge_count) { DiscourseReputation::DiscourseReputationAccess.get_user_badge_count_by_type(id, 2) }
+    add_to_class(:user, :bronze_badge_count) { DiscourseReputation::DiscourseReputationAccess.get_user_badge_count_by_type(id, 3) }
+    add_to_serializer(:user_card, :gold_badge_count) { object.gold_badge_count }
+    add_to_serializer(:user_card, :silver_badge_count) { object.silver_badge_count }
+    add_to_serializer(:user_card, :bronze_badge_count) { object.bronze_badge_count }
+    add_to_serializer(:post, :user_gold_badge_count) { object.user.gold_badge_count }
+    add_to_serializer(:post, :user_silver_badge_count) { object.user.silver_badge_count }
+    add_to_serializer(:post, :user_bronze_badge_count) { object.user.bronze_badge_count }
 end 
