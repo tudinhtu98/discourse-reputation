@@ -6,6 +6,9 @@ li#current-user {
 }
 
 li#current-user {
+  .user-reputation-count {
+    color: var(--header_primary-low-mid);
+  }
   .gold-badge-count {
     color: #ffcc02;
   }
@@ -17,25 +20,23 @@ li#current-user {
   }
 }
 
-.user-reputation-count,
-.user-badge-count-by-type {
+.user-badge-count-by-type,
+.user-reputation-count {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 0.8em;
+
   span {
     margin-left: 2px;
     margin-right: 3px;
   }
 }
 
-.user-badge-count-by-type,
 .user-reputation-count {
-  display: flex;
-  font-size: 0.8em;
-  font-weight: bold;
-}
-
-.user-reputation-count {
-  display: flex;
-  justify-content: start;
-  align-items: center;
+  span {
+    font-weight: bolder;
+  }
 }
 
 .user-badge-count-by-type {
@@ -59,7 +60,7 @@ li#current-user {
     .silver-badge {
       background-color: #b4b8bc;
     }
-    
+
     .bronze-badge {
       background-color: #d1a684;
     }

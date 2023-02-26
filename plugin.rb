@@ -50,6 +50,7 @@ after_initialize do
         reputationComment = QuestionAnswerComment.where(user_id: self.id).sum(:qa_reputation_count)
         reputation = 100 + reputationPost + reputationComment
     end
+    add_to_serializer(:current_user, :reputation_count) { object.reputation_count }
     add_to_serializer(:user_card, :reputation_count) { object.reputation_count }
     add_to_serializer(:post, :user_reputation_count) { object.user.reputation_count }
 
