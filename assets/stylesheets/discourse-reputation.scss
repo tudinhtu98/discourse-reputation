@@ -22,10 +22,21 @@ li#current-user {
 
 .user-badge-count-by-type,
 .user-reputation-count {
+  font-size: 1em;
+}
+
+.username-reputation-container {
+  .user-badge-count-by-type,
+  .user-reputation-count {
+    font-size: 0.8em;
+  }
+}
+
+.user-badge-count-by-type,
+.user-reputation-count {
   display: flex;
   justify-content: start;
   align-items: center;
-  font-size: 0.8em;
 
   span {
     margin-left: 2px;
