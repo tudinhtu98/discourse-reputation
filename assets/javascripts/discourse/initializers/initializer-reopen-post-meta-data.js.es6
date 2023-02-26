@@ -7,6 +7,9 @@ export default {
   initialize() {
     withPluginApi("0.11.0", api => {
       includeAttributes("user_reputation_count");
+      includeAttributes("user_gold_badge_count");
+      includeAttributes("user_silver_badge_count");
+      includeAttributes("user_bronze_badge_count");
 
       api.reopenWidget("post-meta-data", {
         html(attrs) {
