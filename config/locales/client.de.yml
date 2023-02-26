@@ -2,4 +2,13 @@ en:
   js:
     discourse_reputation:
       title: "Discourse reputation"
-    reputation_score: "Reputationspunktzahl"
+    reputation_score: "reputationspunktzahl"
+    gold_badge:
+      one: "goldenes abzeichen"
+      many: "goldabzeichen"
+    silver_badge:
+      one: "silbernes abzeichen"
+      many: "silberabzeichen"
+    bronze_badge:
+      one: "bronzeabzeichen"
+      many: "bronzeabzeichen"

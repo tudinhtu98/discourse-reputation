@@ -3,3 +3,12 @@ en:
     discourse_reputation:
       title: "Discourse reputation"
     reputation_score: "reputation score"
+    gold_badge:
+      one: "gold badge"
+      many: "gold badges"
+    silver_badge:
+      one: "silver badge"
+      many: "silver badges"
+    bronze_badge:
+      one: "bronze badge"
+      many: "bronze badges"

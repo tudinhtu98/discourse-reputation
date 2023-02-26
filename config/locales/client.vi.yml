@@ -2,4 +2,13 @@ vi:
   js:
     discourse_reputation:
       title: "Discourse reputation"
-    reputation_score: "Điểm số tích cực"
+    reputation_score: "điểm số tích cực"
+    gold_badge:
+      one: "huy hiệu vàng"
+      many: "huy hiệu vàng"
+    silver_badge:
+      one: "huy hiệu bạc"
+      many: "huy hiệu bạc"
+    bronze_badge:
+      one: "huy hiệu đồng"
+      many: "huy hiệu đồng"

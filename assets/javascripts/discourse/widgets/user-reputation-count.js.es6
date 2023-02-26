@@ -14,9 +14,10 @@ createWidget('user-reputation-count', {
       h("span", {
         attributes: {
           "data-reputation-username": username,
-          "data-reputation-score": reputationCount
+          "data-reputation-score": reputationCount,
+          "title": `${reputationCount} ${I18n.t("reputation_score").toLowerCase()}`,
         }
-      }, `${I18n.t("reputation_score")}: ${reputationCount}`)
+      }, reputationCount)
     ];
   },
 });
