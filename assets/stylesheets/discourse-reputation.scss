@@ -1,7 +1,20 @@
 .user-card-post-names-outlet,
 .user-post-names-outlet,
-.username-reputation-container {
+.username-reputation-container,
+li#current-user {
   display: flex;
+}
+
+li#current-user {
+  .gold-badge-count {
+    color: #ffcc02;
+  }
+  .silver-badge-count {
+    color: #b4b8bc;
+  }
+  .bronze-badge-count {
+    color: #d1a684;
+  }
 }
 
 .user-reputation-count,
@@ -46,7 +59,7 @@
     .silver-badge {
       background-color: #b4b8bc;
     }
-
+    
     .bronze-badge {
       background-color: #d1a684;
     }

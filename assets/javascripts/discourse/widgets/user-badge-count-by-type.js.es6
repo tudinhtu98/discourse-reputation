@@ -13,15 +13,15 @@ createWidget('user-badge-count-by-type', {
     return [
       h("span.badge", [
         h("span.gold-badge"),
-        h("span.badge", `${goldBadgeCount}`),
+        h("span.gold-badge-count", `${goldBadgeCount}`),
       ]),
       h("span.badge", [
         h("span.silver-badge"),
-        h("span.badge", `${silverBadgeCount}`),
+        h("span.silver-badge-count", `${silverBadgeCount}`),
       ]),
       h("span.badge", [
         h("span.bronze-badge"),
-        h("span.badge", `${bronzeBadgeCount}`),
+        h("span.bronze-badge-count", `${bronzeBadgeCount}`),
       ]),
     ];
   },

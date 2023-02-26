@@ -56,6 +56,9 @@ after_initialize do
     add_to_class(:user, :gold_badge_count) { DiscourseReputation::DiscourseReputationAccess.get_user_badge_count_by_type(id, 1) }
     add_to_class(:user, :silver_badge_count) { DiscourseReputation::DiscourseReputationAccess.get_user_badge_count_by_type(id, 2) }
     add_to_class(:user, :bronze_badge_count) { DiscourseReputation::DiscourseReputationAccess.get_user_badge_count_by_type(id, 3) }
+    add_to_serializer(:current_user, :gold_badge_count) { object.gold_badge_count }
+    add_to_serializer(:current_user, :silver_badge_count) { object.silver_badge_count }
+    add_to_serializer(:current_user, :bronze_badge_count) { object.bronze_badge_count }
     add_to_serializer(:user_card, :gold_badge_count) { object.gold_badge_count }
     add_to_serializer(:user_card, :silver_badge_count) { object.silver_badge_count }
     add_to_serializer(:user_card, :bronze_badge_count) { object.bronze_badge_count }
