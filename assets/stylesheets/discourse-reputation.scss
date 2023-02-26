@@ -1,16 +1,65 @@
+.user-card-post-names-outlet,
+.user-post-names-outlet,
+.username-reputation-container {
+  display: flex;
+}
+
+.user-reputation-count,
+.user-badge-count-by-type {
+  span {
+    margin-left: 2px;
+    margin-right: 3px;
+  }
+}
+
+.user-badge-count-by-type,
+.user-reputation-count {
+  display: flex;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
 .user-reputation-count {
   display: flex;
   justify-content: start;
   align-items: center;
 }
 
+.user-badge-count-by-type {
+  .badge {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+    .gold-badge,
+    .silver-badge,
+    .bronze-badge {
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+    }
+
+    .gold-badge {
+      background-color: #ffcc02;
+    }
+
+    .silver-badge {
+      background-color: #b4b8bc;
+    }
+
+    .bronze-badge {
+      background-color: #d1a684;
+    }
+  }
+}
+
 .topic-meta-data {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: stretch;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
 }
 
 .username-container {
@@ -21,10 +70,3 @@
   align-items: flex-start;
   align-content: stretch;
 }
-
-.username-reputation-container {
-  display: flex;
-  font-size: 0.8em;
-  font-weight: bold;
-}
-

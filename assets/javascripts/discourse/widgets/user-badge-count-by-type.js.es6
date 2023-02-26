@@ -11,9 +11,18 @@ createWidget('user-badge-count-by-type', {
     const bronzeBadgeCount = attrs.bronzeBadgeCount ? attrs.bronzeBadgeCount : 0;
 
     return [
-      h("span.gold-badge", `Vàng: ${goldBadgeCount}`),
-      h("span.silver-badge", `Bạc: ${silverBadgeCount}`),
-      h("span.bronze-badge", `Đồng: ${bronzeBadgeCount}`),
+      h("span.badge", [
+        h("span.gold-badge"),
+        h("span.badge", `${goldBadgeCount}`),
+      ]),
+      h("span.badge", [
+        h("span.silver-badge"),
+        h("span.badge", `${silverBadgeCount}`),
+      ]),
+      h("span.badge", [
+        h("span.bronze-badge"),
+        h("span.badge", `${bronzeBadgeCount}`),
+      ]),
     ];
   },
 });
