@@ -26,9 +26,13 @@ li#current-user {
 }
 
 .username-reputation-container {
+  flex-direction: column;
   .user-badge-count-by-type,
   .user-reputation-count {
     font-size: 0.8em;
+  }
+  .badge-reputation-container {
+    display: flex;
   }
 }
 
@@ -81,10 +85,11 @@ li#current-user {
 .topic-meta-data {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
+  align-items: flex-end;
+
+  .names {
+    margin-right: 0;
+  }
 }
 
 .username-container {
@@ -94,4 +99,29 @@ li#current-user {
   justify-content: flex-start;
   align-items: flex-start;
   align-content: stretch;
+}
+
+.topic-meta-data-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  padding: 4px;
+  margin-bottom: 4px;
+
+  .user-infos {
+    margin-top: 8px;
+  }
+}
+
+.topic-avatar {
+  border-top: none;
+  margin: 0;
+  padding: 0;
+  padding-right: 4px;
+}
+
+.post-voting-post {
+  top: 0px !important;
+  margin-top: 0 !important;
 }
