@@ -1,4 +1,4 @@
-import Report from "admin/models/report";
+import Report from "../models/report";
 import Component from "@ember/component";
 import discourseDebounce from "discourse-common/lib/debounce";
 import loadScript from "discourse/lib/load-script";

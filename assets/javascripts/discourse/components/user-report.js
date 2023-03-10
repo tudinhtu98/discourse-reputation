@@ -1,5 +1,5 @@
 import EmberObject, { action, computed } from "@ember/object";
-import Report, { DAILY_LIMIT_DAYS, SCHEMA_VERSION } from "admin/models/report";
+import Report, { DAILY_LIMIT_DAYS, SCHEMA_VERSION } from "../models/report";
 import { alias, and, equal, notEmpty, or } from "@ember/object/computed";
 import Component from "@ember/component";
 import I18n from "I18n";
@@ -143,7 +143,7 @@ export default Component.extend({
 
   @discourseComputed("currentMode")
   modeComponent(currentMode) {
-    return `admin-report-${currentMode.replace(/_/g, "-")}`;
+    return `user-report-${currentMode.replace(/_/g, "-")}`;
   },
 
   @discourseComputed(
