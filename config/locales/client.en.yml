@@ -12,3 +12,5 @@ en:
     bronze_badge:
       one: "bronze badge"
       many: "bronze badges"
+    reputation_chart:
+      no_data: "No data"
