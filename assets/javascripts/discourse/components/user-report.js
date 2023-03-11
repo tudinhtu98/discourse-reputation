@@ -3,7 +3,7 @@ import Report, { DAILY_LIMIT_DAYS, SCHEMA_VERSION } from "../models/report";
 import { alias, and, equal, notEmpty, or } from "@ember/object/computed";
 import Component from "@ember/component";
 import I18n from "I18n";
-import ReportLoader from "discourse/lib/reports-loader";
+import ReportLoader from "../lib/reports-loader";
 import discourseComputed from "discourse-common/utils/decorators";
 import { exportEntity } from "discourse/lib/export-csv";
 import { isPresent } from "@ember/utils";
