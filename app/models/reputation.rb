@@ -5,13 +5,20 @@ class Reputation
         username = nil
     )
         user = User.find_by_username(username)
-        result = Post.where(
-            "created_at >= ? AND created_at <= ?",
+        post_result = Post.where(
+            "posts.created_at >= ? AND posts.created_at <= ?",
             start_date,
             end_date,
             ).where(user_id: user.id)
-        # reputationComment = QuestionAnswerComment.where(user_id: self.id).sum(:qa_reputation_count)
-        result = result.group("date(created_at)").order("date(created_at)")
-        result.sum(:qa_reputation_count)
+        post_result = post_result.group("date(created_at)").order("date(created_at)").sum(:qa_reputation_count);
+
+        qac_result = QuestionAnswerComment.where(
+            "question_answer_comments.created_at >= ? AND question_answer_comments.created_at <= ?",
+            start_date,
+            end_date,
+            ).where(user_id: user.id)
+        qac_result = qac_result.group("date(created_at)").order("date(created_at)").sum("qa_reputation_count");
+        
+        result = post_result.merge(qac_result) { |key, v1, v2| v1 + v2 }
     end
 end
