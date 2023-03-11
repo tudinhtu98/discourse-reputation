@@ -133,6 +133,16 @@ li#current-user {
     align-items: center;
     border-bottom: 1px solid var(--primary-low);
     padding-bottom: 0.5em;
+
+    h3 {
+      text-transform: uppercase;
+    }
+  }
+
+  .section-body {
+    .charts .header {
+      border-bottom: none;
+    }
   }
 
   .period-chooser .period-chooser-header {
