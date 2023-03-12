@@ -125,3 +125,27 @@ li#current-user {
   top: 0px !important;
   margin-top: 0 !important;
 }
+
+.user-summary-report {
+  .section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--primary-low);
+    padding-bottom: 0.5em;
+
+    h3 {
+      text-transform: uppercase;
+    }
+  }
+
+  .section-body {
+    .charts .header {
+      border-bottom: none;
+    }
+  }
+
+  .period-chooser .period-chooser-header {
+    font-size: var(--font-down-2);
+  }
+}

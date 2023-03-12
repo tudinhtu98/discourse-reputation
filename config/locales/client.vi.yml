@@ -12,3 +12,5 @@ vi:
     bronze_badge:
       one: "huy hiệu đồng"
       many: "huy hiệu đồng"
+    reputation_chart:
+      no_data: "Không có dữ liệu"

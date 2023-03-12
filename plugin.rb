@@ -9,8 +9,14 @@ enabled_site_setting :discourse_reputation_enabled
 PLUGIN_NAME ||= 'discourse_reputation'.freeze
 register_asset 'stylesheets/discourse-reputation.scss'
 after_initialize do
-    # load File.expand_path('../app/controllers/discourse_reputation_controller.rb', __FILE__)
-    load File.expand_path('../app/lib/post_voting/vote_manager.rb', __FILE__)
+    %w[
+        ../app/lib/post_voting/vote_manager.rb
+        ../app/controllers/discourse_reputation_controller.rb
+        ../app/controllers/reputation_reports_controller.rb
+        ../app/models/concerns/reputations.rb
+        ../app/models/report.rb
+        ../app/models/reputation.rb
+      ].each { |path| load File.expand_path(path, __FILE__) }
 
     module ::DiscourseReputation
         class Engine < ::Rails::Engine
@@ -42,7 +48,7 @@ after_initialize do
     Discourse::Application.routes.append do
         # Map the path `/discourse-reputation` to `DiscourseReputationController`’s `index` method
         # Remove route if not in use
-        # get '/discourse-reputation' => 'discourse_reputation#index'
+        get 'reputation-reports/bulk' => 'reputation_reports#bulk'
     end
 
     add_to_class(:user, :reputation_count) do

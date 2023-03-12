@@ -1,0 +1,26 @@
+<div class="user-summary-report top-section">
+      <div class="period-section">
+        <div class="section-title">
+          <h3>
+            {{i18n "reputation_score"}}
+          </h3>
+          <PeriodChooser
+            @period={{this.period}}
+            @action={{action "changePeriod"}}
+            @content={{this.availablePeriods}}
+            @fullDay={{false}}
+          />
+        </div>
+
+        <div class="section-body">
+          <div class="charts">
+            <UserReport
+                @dataSourceName="reputations"
+                @showTrend={{true}}
+                @forcedModes="chart"
+                @filters={{this.filters}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>

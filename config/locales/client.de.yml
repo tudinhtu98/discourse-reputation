@@ -12,3 +12,5 @@ en:
     bronze_badge:
       one: "bronzeabzeichen"
       many: "bronzeabzeichen"
+    reputation_chart:
+      no_data: "No data"
