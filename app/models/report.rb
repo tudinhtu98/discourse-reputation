@@ -1,7 +1,7 @@
 class Report
     include Reports::Reputations
 
-    def add_username_filter
-        username = filters[:username].to_s if filters[:username].present?
+    def add_user_id_filter
+        user_id = filters[:user_id].to_s if filters[:user_id].present?
     end
 end
