@@ -28,7 +28,7 @@ class Reputation
             "question_answer_comments.created_at < ?",
             start_date
             ).where(user_id: user_id).sum(:qa_reputation_count)
-        sum_before_start_date = 100 + post_sum + qac_sum;
+        sum_before_start_date = SiteSetting.default_reputation + post_sum + qac_sum;
 
         # Fill all date with sum reputation
         current_date = start_date.to_date

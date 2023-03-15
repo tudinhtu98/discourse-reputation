@@ -4,3 +4,6 @@ plugins:
   cache_in_minutes_user_badge_count:
       default: 5
       client: false
+  default_reputation:
+      default: 100
+      client: false

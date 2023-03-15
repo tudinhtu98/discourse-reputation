@@ -54,7 +54,7 @@ after_initialize do
     add_to_class(:user, :reputation_count) do
         reputationPost = Post.where(user_id: self.id).sum(:qa_reputation_count)
         reputationComment = QuestionAnswerComment.where(user_id: self.id).sum(:qa_reputation_count)
-        reputation = 100 + reputationPost + reputationComment
+        reputation = SiteSetting.default_reputation + reputationPost + reputationComment
     end
     add_to_serializer(:current_user, :reputation_count) { object.reputation_count }
     add_to_serializer(:user_card, :reputation_count) { object.reputation_count }
