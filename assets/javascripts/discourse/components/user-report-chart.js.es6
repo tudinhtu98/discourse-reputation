@@ -170,8 +170,78 @@ export default Component.extend({
     }
   },
 
+  collapseWithoutSumValue(model, data, grouping) {
+    grouping = grouping || Report.groupingForDatapoints(data.length);
+
+    if (grouping === "daily") {
+      return data;
+    } else if (grouping === "weekly" || grouping === "monthly") {
+      const isoKind = grouping === "weekly" ? "isoWeek" : "month";
+      const kind = grouping === "weekly" ? "week" : "month";
+      const startMoment = moment(model.start_date, "YYYY-MM-DD");
+
+      let currentIndex = 0;
+      let currentStart = startMoment.clone().startOf(isoKind);
+      let currentEnd = startMoment.clone().endOf(isoKind);
+      const transformedData = [
+        {
+          x: currentStart.format("YYYY-MM-DD"),
+          y: 0,
+        },
+      ];
+
+      let appliedAverage = false;
+      data.forEach((d) => {
+        const date = moment(d.x, "YYYY-MM-DD");
+
+        if (
+          !date.isSame(currentStart) &&
+          !date.isBetween(currentStart, currentEnd)
+        ) {
+          if (model.average) {
+            transformedData[currentIndex].y = applyAverage(
+              transformedData[currentIndex].y,
+              currentStart,
+              currentEnd
+            );
+
+            appliedAverage = true;
+          }
+
+          currentIndex += 1;
+          currentStart = currentStart.add(1, kind).startOf(isoKind);
+          currentEnd = currentEnd.add(1, kind).endOf(isoKind);
+        } else {
+          appliedAverage = false;
+        }
+
+        if (transformedData[currentIndex]) {
+          transformedData[currentIndex].y = d.y;
+        } else {
+          transformedData[currentIndex] = {
+            x: d.x,
+            y: d.y,
+          };
+        }
+      });
+
+      if (model.average && !appliedAverage) {
+        transformedData[currentIndex].y = applyAverage(
+          transformedData[currentIndex].y,
+          currentStart,
+          moment(model.end_date).subtract(1, "day") // remove 1 day as model end date is at 00:00 of next day
+        );
+      }
+
+      return transformedData;
+    }
+
+    // ensure we return something if grouping is unknown
+    return data;
+  },
+
   _applyChartGrouping(model, data, options) {
-    return Report.collapse(model, data, options.chartGrouping);
+    return this.collapseWithoutSumValue(model, data, options.chartGrouping);
   },
 
   @bind
